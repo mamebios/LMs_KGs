@@ -3,7 +3,7 @@ from process import parse_sentence
 from mapper import Map, deduplication
 from transformers import AutoTokenizer, BertModel, GPT2Model
 import argparse
-import en_core_web_md
+import spacy
 from tqdm import tqdm
 import json
 
@@ -21,7 +21,7 @@ parser = argparse.ArgumentParser(description='Process lines of text corpus into 
 parser.add_argument('input_filename', type=str, help='text file as input')
 parser.add_argument('output_filename', type=str, help='output text file')
 parser.add_argument('--language_model',default='bert-base-cased', 
-                    choices=[ 'bert-large-uncased', 'bert-large-cased', 'bert-base-uncased', 'bert-base-cased', 'gpt2', 'gpt2-medium', 'gpt2-large', 'gpt2-xl'],
+                    choices=[ 'm3rg-iitd/matscibert', 'bert-large-uncased', 'bert-large-cased', 'bert-base-uncased', 'bert-base-cased', 'gpt2', 'gpt2-medium', 'gpt2-large', 'gpt2-xl'],
                     help='which language model to use')
 parser.add_argument('--use_cuda', default=True, 
                         type=str2bool, nargs='?',
@@ -35,7 +35,7 @@ parser.add_argument('--threshold', default=0.003,
 args = parser.parse_args()
 
 use_cuda = args.use_cuda
-nlp = en_core_web_md.load()
+nlp = spacy.load('en_core_web_sm')
 
 '''Create
 Tested language model:
