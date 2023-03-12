@@ -1,7 +1,7 @@
 from constant import invalid_relations_set
 
 from REL.db.generic import GenericLookup
-sqlite_path = "../../Documents/wiki_2020/generated"
+sqlite_path = "./"
 emb = GenericLookup("entity_word_embedding", save_dir=sqlite_path, table_name="embeddings")
 
 
