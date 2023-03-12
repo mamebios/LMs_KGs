@@ -1,7 +1,6 @@
 from utils import compress_attention, create_mapping, BFS, build_graph, is_word
 from multiprocessing import Pool
 import spacy
-import en_core_web_md
 import torch
 from transformers import AutoTokenizer, BertModel, GPT2Model
 from constant import invalid_relations_set
@@ -107,7 +106,7 @@ if __name__ == "__main__":
     import json
     from tqdm import tqdm
 
-    nlp = en_core_web_md.load()
+    nlp = spacy.load('en_core_web_sm')
     selected_model = 'gpt2-medium'
 
     use_cuda = True
