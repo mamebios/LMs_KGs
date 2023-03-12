@@ -74,7 +74,11 @@ if __name__ == '__main__':
                     for triplets in parse_sentence(sent.text, tokenizer, encoder, nlp, use_cuda=use_cuda):
                         valid_triplets.append(triplets)
                 if len(valid_triplets) > 0:
+                    
+                    g.write(json.dumps(valid_triplets, indent = 8)+'\n')
+                    
                     # Map
+                    '''
                     mapped_triplets = []
                     for triplet in valid_triplets:
                         head = triplet['h']
@@ -93,3 +97,4 @@ if __name__ == '__main__':
                         output['sent'] = sentence
                     if len(output['tri']) > 0:
                         g.write(json.dumps( output )+'\n')
+                    '''
